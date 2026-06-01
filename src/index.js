@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 
 const authRoutes = require('./routes/auth')
 const jobRoutes = require('./routes/jobs')
+const aiRoutes = require('./routes/ai')
 
 const app = express()
 const PORT = process.env.PORT || 5000
@@ -21,6 +22,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/auth', authRoutes)
 app.use('/api/jobs', jobRoutes)
+app.use('/api/ai', aiRoutes)
 
 app.use((req, res) => {
   res.status(404).json({ message: 'Route not found' })
