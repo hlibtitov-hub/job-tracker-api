@@ -1,7 +1,6 @@
 const express = require('express')
 const multer = require('multer')
-const _pdfParseModule = require('pdf-parse')
-const pdfParse = typeof _pdfParseModule === 'function' ? _pdfParseModule : (_pdfParseModule.default || require('pdf-parse/lib/pdf-parse.js'))
+const pdfParse = require('pdf-parse')
 const mammoth = require('mammoth')
 
 const router = express.Router()
