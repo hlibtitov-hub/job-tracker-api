@@ -9,7 +9,7 @@ router.post('/analyze', async (req, res) => {
     return res.status(400).json({ message: 'Resume and job description are required' })
   }
 
-  if (!process.env.OPENAI_API_KEY) {
+  if (!process.env.GROQ_API_KEY) {
     return res.status(500).json({ message: 'AI service not configured' })
   }
 
