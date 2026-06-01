@@ -32,14 +32,14 @@ Return this exact JSON structure:
 }`
 
   try {
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
+        'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
       },
       body: JSON.stringify({
-        model: 'gpt-4o-mini',
+        model: 'llama-3.1-8b-instant',
         messages: [{ role: 'user', content: prompt }],
         temperature: 0.3,
         max_tokens: 1000,
@@ -48,7 +48,7 @@ Return this exact JSON structure:
 
     if (!response.ok) {
       const err = await response.json()
-      throw new Error(err.error?.message || 'OpenAI API error')
+      throw new Error(err.error?.message || 'Groq API error')
     }
 
     const data = await response.json()
