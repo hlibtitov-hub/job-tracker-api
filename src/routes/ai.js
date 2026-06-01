@@ -13,7 +13,7 @@ router.post('/analyze', async (req, res) => {
     return res.status(500).json({ message: 'AI service not configured' })
   }
 
-  const prompt = `You are an expert resume analyst and career coach. Analyze this resume against the job description and return a JSON response ONLY (no markdown, no extra text).
+  const prompt = `You are a Senior Career Coach and Resume Expert. Analyze this resume against the job description and return a JSON response ONLY (no markdown, no extra text, no comments).
 
 RESUME:
 ${resume}
@@ -21,14 +21,16 @@ ${resume}
 JOB DESCRIPTION:
 ${jobDescription}
 
-Return this exact JSON structure:
+Return this exact JSON structure with no deviations:
 {
   "matchScore": <number 0-100>,
   "summary": "<2-3 sentence overall assessment>",
-  "strengths": ["<strength 1>", "<strength 2>", "<strength 3>"],
-  "missingSkills": ["<skill 1>", "<skill 2>", "<skill 3>"],
-  "improvements": ["<improvement suggestion 1>", "<improvement suggestion 2>", "<improvement suggestion 3>"],
-  "keywords": ["<keyword to add 1>", "<keyword to add 2>", "<keyword to add 3>", "<keyword to add 4>", "<keyword to add 5>"]
+  "strengths": ["<strength 1>", "<strength 2>", "<strength 3>", "<strength 4>"],
+  "missingSkills": ["<missing skill 1>", "<missing skill 2>", "<missing skill 3>", "<missing skill 4>"],
+  "improvements": ["<specific resume improvement 1>", "<specific resume improvement 2>", "<specific resume improvement 3>"],
+  "keywords": ["<keyword 1>", "<keyword 2>", "<keyword 3>", "<keyword 4>", "<keyword 5>", "<keyword 6>"],
+  "interviewReadiness": "<one sentence estimate of interview readiness based on experience and skills match>",
+  "careerAdvice": ["<career advice 1>", "<career advice 2>", "<career advice 3>"]
 }`
 
   try {
